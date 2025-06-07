@@ -1,0 +1,361 @@
+:root {
+    --navy-dark: #001f3f;
+    --navy-medium: #003366;
+    --navy-light: #004080;
+    --accent-blue: #0074D9;
+    --accent-light: #7FDBFF;
+    --text-light: #f0f8ff;
+    --text-dark: #333;
+    --border-color: #5a8fd3;
+    --success: #2ECC40;
+    --warning: #FF851B;
+    --error: #FF4136;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f5f8fa;
+    color: var(--text-dark);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, var(--navy-dark), var(--navy-medium));
+    color: var(--text-light);
+    padding: 25px 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
+}
+
+.preview-section {
+    flex: 1;
+    min-width: 300px;
+}
+
+.controls-section {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.video-upload {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.upload-btn {
+    background-color: var(--navy-medium);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.upload-btn:hover {
+    background-color: var(--navy-light);
+}
+
+.hidden {
+    display: none;
+}
+
+#video-name {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.video-container {
+    position: relative;
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+}
+
+#video-preview {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #000;
+}
+
+.text-overlay-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 150px;
+    min-height: 50px;
+    border: 2px dotted rgba(255, 255, 255, 0.7);
+    cursor: move;
+    pointer-events: auto;
+    padding: 10px;
+    resize: both;
+    overflow: hidden;
+}
+
+.text-content {
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 36px;
+    color: white;
+    text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    word-wrap: break-word;
+    text-align: left;
+    outline: none;
+}
+
+.text-input {
+    background-color: #f9fbfd;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e1e8ed;
+}
+
+.text-input label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--navy-dark);
+}
+
+#text-segments {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd6e2;
+    border-radius: 5px;
+    min-height: 120px;
+    font-size: 0.95rem;
+    resize: vertical;
+}
+
+#text-segments:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px rgba(0, 116, 217, 0.2);
+}
+
+#segment-info {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--navy-medium);
+}
+
+.segment-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#segment-dropdown {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #cbd6e2;
+    background-color: white;
+    flex-grow: 1;
+}
+
+.text-controls {
+    background-color: #f9fbfd;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e1e8ed;
+}
+
+.control-group {
+    margin-bottom: 20px;
+}
+
+.control-group:last-child {
+    margin-bottom: 0;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--navy-dark);
+}
+
+.control-group input[type="range"] {
+    width: 70%;
+    vertical-align: middle;
+}
+
+.control-group input[type="number"] {
+    width: 100px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #cbd6e2;
+}
+
+.alignment-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.align-btn {
+    flex: 1;
+    padding: 8px 0;
+    background-color: #e1e8ed;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.align-btn:hover {
+    background-color: #cbd6e2;
+}
+
+.align-btn.active {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.export-section {
+    background-color: #f9fbfd;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e1e8ed;
+}
+
+.export-btn {
+    width: 100%;
+    padding: 12px 0;
+    background-color: var(--navy-medium);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+}
+
+.export-btn:hover {
+    background-color: var(--navy-light);
+}
+
+.export-btn:disabled {
+    background-color: #9ab3d0;
+    cursor: not-allowed;
+}
+
+.progress-container {
+    background-color: #e1e8ed;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 30px;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background-color: var(--accent-blue);
+    transition: width 0.3s;
+}
+
+#progress-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: var(--navy-dark);
+    font-weight: 500;
+}
+
+.instructions {
+    padding: 20px;
+    background-color: #f9fbfd;
+    border-top: 1px solid #e1e8ed;
+    margin-top: 20px;
+}
+
+.instructions h3 {
+    color: var(--navy-dark);
+    margin-bottom: 10px;
+}
+
+.instructions ol {
+    padding-left: 20px;
+}
+
+.instructions li {
+    margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .video-container {
+        aspect-ratio: 16/9;
+    }
+    
+    .control-group input[type="range"] {
+        width: 60%;
+    }
+}

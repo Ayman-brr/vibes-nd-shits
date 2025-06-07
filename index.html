@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toillatto</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Video Editor with Text Overlay</h1>
+            <p>Upload a video, add text overlays, and export multiple videos with different text segments</p>
+        </header>
+
+        <div class="main-content">
+            <div class="preview-section">
+                <div class="video-upload">
+                    <label for="video-file" class="upload-btn">Upload Video</label>
+                    <input type="file" id="video-file" accept="video/*" class="hidden">
+                    <span id="video-name">No video selected</span>
+                </div>
+                
+                <div class="video-container">
+                    <video id="video-preview" controls></video>
+                    <div class="text-overlay-container">
+                        <div id="text-box" class="text-box">
+                            <div id="text-content" class="text-content" contenteditable="true">Edit your text here</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <div class="text-input">
+                    <label for="text-segments">Text Segments (separate with two new lines):</label>
+                    <textarea id="text-segments" rows="6">First segment text\n\nSecond segment text</textarea>
+                    <div id="segment-info">Segments detected: <span id="segment-count">2</span></div>
+                    <div class="segment-selector">
+                        <label for="segment-dropdown">Preview Segment:</label>
+                        <select id="segment-dropdown">
+                            <option value="0">Segment 1</option>
+                            <option value="1">Segment 2</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-controls">
+                    <div class="control-group">
+                        <label for="font-size">Font Size (px):</label>
+                        <input type="range" id="font-size" min="8" max="200" value="36">
+                        <span id="font-size-value">36</span>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="rotation">Rotation (deg):</label>
+                        <input type="number" id="rotation" min="0" max="360" value="0">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>Alignment:</label>
+                        <div class="alignment-options">
+                            <button data-align="left" class="align-btn active">Left</button>
+                            <button data-align="center" class="align-btn">Center</button>
+                            <button data-align="right" class="align-btn">Right</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="export-section">
+                    <button id="export-btn" class="export-btn">Export Videos</button>
+                    <div class="progress-container">
+                        <div id="progress-bar" class="progress-bar"></div>
+                        <div id="progress-text">Ready to export</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>How to use:</h3>
+            <ol>
+                <li>Upload a video file</li>
+                <li>Edit text segments in the text area (separate segments with two new lines)</li>
+                <li>Customize text appearance using the controls</li>
+                <li>Drag, resize and position the text overlay as needed</li>
+                <li>Click "Export Videos" to generate your videos</li>
+            </ol>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.10.0/dist/ffmpeg.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
